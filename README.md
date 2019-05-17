@@ -1,2 +1,3 @@
 # charity
-blockchain project with hyperledger composer
+
+blockchain project
