@@ -17,3 +17,45 @@
  */
 
 namespace org.aut.mathcs.blockchain
+
+asset Donated identified by dId {
+  o String dId
+  o Boolean isCash
+  --> Charency value
+  --> CharityCorp owner1
+  --> Recipient owner2
+}
+
+participant Donor identified by doId{
+  o String doId
+  o String name
+  --> Charency credit
+}
+
+participant CharityCorp identified by name {
+  o String name
+  --> Charency balance
+}
+
+participant Recipient identified by rid {
+  o String rid
+  o Integer recCredit
+  o Integer priority
+  o String location
+}
+
+asset Charency identified by cId{
+  o String cId
+  o Integer value
+  o Integer pubnum
+}
+
+transaction Help {
+  --> Donated Donated
+  --> CharityCorp charitycorp
+}
+
+transaction Recive {
+  --> Donated Donated
+  --> Recipient recipient
+}
