@@ -1,0 +1,185 @@
+================================================================================
+==== Node Report ===============================================================
+
+Event: exception, location: "OnUncaughtException"
+Filename: node-report.20190517.200029.7857.001.txt
+Dump event time:  2019/05/17 20:00:29
+Module load time: 2019/05/17 20:00:15
+Process ID: 7857
+Command line: node /usr/local/bin/composer network install --archiveFile charity@1.0.0.bna --card PeerAdmin@hlfv1 
+
+Node.js version: v8.15.1
+(http_parser: 2.8.0, v8: 6.2.414.75, uv: 1.23.2, zlib: 1.2.11, ares: 1.10.1-DEV,
+ modules: 57, nghttp2: 1.33.0, napi: 3, openssl: 1.0.2r, icu: 60.1, unicode: 10.0,
+ cldr: 32.0, tz: 2017c)
+
+node-report version: 2.2.1 (built against Node.js v8.15.1, glibc 2.23, 64 bit)
+
+OS version: Linux 4.15.0-47-generic #50~16.04.1-Ubuntu SMP Fri Mar 15 16:06:21 UTC 2019
+(glibc: 2.23)
+
+Machine: mohammadhossein x86_64
+
+================================================================================
+==== JavaScript Stack Trace ====================================================
+
+WriteStream.emit (events.js:183:7)
+onwriteError (_stream_writable.js:417:12)
+onwrite (_stream_writable.js:439:5)
+_destroy (internal/streams/destroy.js:39:7)
+WriteStream.stderr._destroy (internal/process/stdio.js:34:7)
+WriteStream.destroy (internal/streams/destroy.js:32:8)
+WriteWrap.afterWrite [as oncomplete] (net.js:870:10)
+
+================================================================================
+==== Native Stack Trace ========================================================
+
+ 0: [pc=0x7f08c51e456b] nodereport::OnUncaughtException(v8::Isolate*) [/usr/local/lib/node_modules/composer-cli/node_modules/node-report/api.node]
+ 1: [pc=0xeaf792] v8::internal::Isolate::Throw(v8::internal::Object*, v8::internal::MessageLocation*) [node]
+ 2: [pc=0x102905d] v8::internal::Runtime_Throw(int, v8::internal::Object**, v8::internal::Isolate*) [node]
+ 3: [pc=0x347456a842fd] 
+
+================================================================================
+==== JavaScript Heap and Garbage Collector =====================================
+
+Heap space name: new_space
+    Memory size: 33,554,432 bytes, committed memory: 32,482,688 bytes
+    Capacity: 16,498,688 bytes, used: 2,305,640 bytes, available: 14,193,048 bytes
+Heap space name: old_space
+    Memory size: 44,363,776 bytes, committed memory: 44,261,320 bytes
+    Capacity: 43,341,384 bytes, used: 30,154,296 bytes, available: 13,187,088 bytes
+Heap space name: code_space
+    Memory size: 2,097,152 bytes, committed memory: 1,658,368 bytes
+    Capacity: 2,013,632 bytes, used: 1,534,112 bytes, available: 479,520 bytes
+Heap space name: map_space
+    Memory size: 5,263,360 bytes, committed memory: 4,990,568 bytes
+    Capacity: 5,166,472 bytes, used: 1,652,992 bytes, available: 3,513,480 bytes
+Heap space name: large_object_space
+    Memory size: 2,822,144 bytes, committed memory: 2,822,144 bytes
+    Capacity: 1,414,132,744 bytes, used: 2,778,632 bytes, available: 1,411,354,112 bytes
+
+Total heap memory size: 88,100,864 bytes
+Total heap committed memory: 86,215,088 bytes
+Total used heap memory: 38,425,672 bytes
+Total available heap memory: 1,442,727,248 bytes
+
+Heap memory limit: 1,501,560,832
+
+================================================================================
+==== Resource Usage ============================================================
+
+Process total resource usage:
+  User mode CPU: 1.555842 secs
+  Kernel mode CPU: 0.432178 secs
+  Average CPU Consumption : 14.2001%
+  Maximum resident set size: 125,120,512 bytes
+  Page faults: 21 (I/O required) 42357 (no I/O required)
+  Filesystem activity: 14056 reads 16 writes
+
+Event loop thread resource usage:
+  User mode CPU: 1.310335 secs
+  Kernel mode CPU: 0.373246 secs
+  Average CPU Consumption : 12.0256%
+  Filesystem activity: 14072 reads 16 writes
+
+================================================================================
+==== Node.js libuv Handle Summary ==============================================
+
+(Flags: R=Ref, A=Active)
+Flags  Type      Address             Details
+[-A]   async     0x00000000026293e0  
+[--]   check     0x00007ffe04686ed0  
+[R-]   idle      0x00007ffe04686f48  
+[--]   prepare   0x00007ffe04686fc0  
+[--]   check     0x00007ffe04687038  
+[-A]   async     0x0000000002184780  
+[R-]   timer     0x00000000026569f0  repeat: 0, timeout expired: 3287183 ms ago
+[R-]   tty       0x000000000263af38  , file descriptor: 9, write queue size: 0, readable, writable
+[-A]   signal    0x0000000002656ae0  signum: 28 (SIGWINCH)
+[R-]   tty       0x0000000002640718  , file descriptor: 11, write queue size: 0, readable, writable
+[-A]   async     0x00007f08c53eccc0  
+[-A]   signal    0x00000000026bb160  signum: 6 (SIGABRT)
+[-A]   signal    0x000000000263f9c0  signum: 14 (SIGALRM)
+[-A]   signal    0x00000000026bca50  signum: 1 (SIGHUP)
+[-A]   signal    0x00000000026bc8c0  signum: 2 (SIGINT)
+[-A]   signal    0x00000000026a7540  signum: 15 (SIGTERM)
+[-A]   signal    0x00000000026b0440  signum: 26 (SIGVTALRM)
+[-A]   signal    0x00000000026c7420  signum: 24 (SIGXCPU)
+[-A]   signal    0x00000000026c7510  signum: 25 (SIGXFSZ)
+[-A]   signal    0x00000000027611e0  signum: 12 (SIGUSR2)
+[-A]   signal    0x0000000002740190  signum: 5 (SIGTRAP)
+[-A]   signal    0x0000000002740280  signum: 31 (SIGSYS)
+[-A]   signal    0x00000000026aa720  signum: 3 (SIGQUIT)
+[-A]   signal    0x00000000026aa810  signum: 6 (SIGABRT)
+[-A]   signal    0x00000000026aa9a0  signum: 29 (SIGIO)
+[-A]   signal    0x00000000026aaa90  signum: 29 (SIGIO)
+[-A]   signal    0x00000000026bb8f0  signum: 30 (SIGPWR)
+[-A]   signal    0x00000000026bb9e0  signum: 16 (SIGSTKFLT)
+[-A]   signal    0x00000000026bbad0  signum: 31 (SIGSYS)
+[RA]   timer     0x000000000277f610  repeat: 0, timeout in: 80 ms
+[--]   timer     0x00000000026c7988  repeat: 0, timeout expired: 5936 ms ago
+[R-]   timer     0x000000000270bb30  repeat: 0, timeout in: 18446744073706264432 ms
+[-A]   async     0x00007f08b6ff9a58  
+[R-]   timer     0x0000000002740320  repeat: 0, timeout in: 4797475183525 ms
+[R-]   prepare   0x00007f08b6ff9980  
+[-A]   async     0x00000000026d1730  
+[-A]   async     0x000000000263fab0  
+[-A]   async     0x00000000026381e0  
+[-A]   async     0x00000000026aa8c0  
+[R-]   timer     0x00000000027403c0  repeat: 0, timeout in: 12948291314243552 ms
+[--]   timer     0x00000000026dbce0  repeat: 0, timeout expired: 8913 ms ago
+[-A]   async     0x0000000002763540  
+[-A]   async     0x0000000002763600  
+[-A]   async     0x00000000026d0950  
+[-A]   timer     0x00000000027a5200  repeat: 0, timeout in: 5000 ms
+
+================================================================================
+==== System Information ========================================================
+
+Environment variables
+  LANG=en_US.UTF-8
+  DISPLAY=:0
+  XAUTHORITY=/home/mohamadhossein/.Xauthority
+  LANGUAGE=en_US
+  TERM=xterm-256color
+  PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+  HOME=/home/mohamadhossein
+  LC_CTYPE=en_US.UTF-8
+  LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+  MAIL=/var/mail/root
+  LOGNAME=root
+  USER=root
+  USERNAME=root
+  SHELL=/bin/bash
+  SUDO_COMMAND=/usr/local/bin/composer network install --archiveFile charity@1.0.0.bna --card PeerAdmin@hlfv1
+  SUDO_USER=mohamadhossein
+  SUDO_UID=1000
+  SUDO_GID=1000
+  SUPPRESS_NO_CONFIG_WARNING=y
+  GRPC_SSL_CIPHER_SUITES=ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384
+
+Resource limits                        soft limit      hard limit
+  core file size (blocks)                       0       unlimited
+  data seg size (kbytes)                unlimited       unlimited
+  file size (blocks)                    unlimited       unlimited
+  max locked memory (bytes)                 65536           65536
+  max memory size (kbytes)              unlimited       unlimited
+  open files                              1048576         1048576
+  stack size (bytes)                      8388608       unlimited
+  cpu time (seconds)                    unlimited       unlimited
+  max user processes                         7647            7647
+  virtual memory (kbytes)               unlimited       unlimited
+
+Loaded libraries
+  /lib/x86_64-linux-gnu/libdl.so.2
+  /lib/x86_64-linux-gnu/librt.so.1
+  /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+  /lib/x86_64-linux-gnu/libm.so.6
+  /lib/x86_64-linux-gnu/libgcc_s.so.1
+  /lib/x86_64-linux-gnu/libpthread.so.0
+  /lib/x86_64-linux-gnu/libc.so.6
+  /lib64/ld-linux-x86-64.so.2
+  /usr/local/lib/node_modules/composer-cli/node_modules/node-report/api.node
+  /usr/local/lib/node_modules/composer-cli/node_modules/grpc/src/node/extension_binary/node-v57-linux-x64-glibc/grpc_node.node
+
+================================================================================
