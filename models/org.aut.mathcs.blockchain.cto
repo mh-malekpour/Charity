@@ -55,7 +55,7 @@ transaction Help {
   --> CharityCorp charitycorp
 }
 
-transaction Recive {
+transaction Receive {
   --> Donated Donated
   --> Recipient recipient
 }
