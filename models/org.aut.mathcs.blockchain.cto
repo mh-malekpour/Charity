@@ -1,35 +1,11 @@
-/*
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/**
- * Write your model definitions here
- */
-
 namespace org.aut.mathcs.blockchain
 
-asset Donated identified by dId {
-  o String dId
+asset Donated identified by dID {
+  o String dID
   o Boolean isCash
-  --> Charency value
-  --> CharityCorp owner1
-  --> Recipient owner2
-}
-
-participant Donor identified by doId{
-  o String doId
-  o String name
-  --> Charency credit
+  --> Charency price
+  --> CharityCorp currentCharity optional
+  --> Person owner optional
 }
 
 participant CharityCorp identified by name {
@@ -37,25 +13,26 @@ participant CharityCorp identified by name {
   --> Charency balance
 }
 
-participant Recipient identified by rid {
-  o String rid
-  o Integer recCredit
-  o Integer priority
-  o String location
+asset Charency identified by cID {
+  o String cID
+  o Integer value
 }
 
-asset Charency identified by cId{
-  o String cId
-  o Integer value
-  o Integer pubnum
+participant Person identified by pID {
+  o String pID
+  o String name
+  o String location
+  o Integer priority
+  --> Charency credit
 }
 
 transaction Help {
-  --> Donated Donated
-  --> CharityCorp charitycorp
+  --> Donated donated
+  --> CharityCorp charityCorp
 }
 
-transaction Receive {
-  --> Donated Donated
-  --> Recipient recipient
+transaction Receive{
+  --> Donated donated
+  --> CharityCorp charityCorp
+  --> Person newOwner
 }

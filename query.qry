@@ -4,23 +4,23 @@ query selectAllDonated {
       SELECT org.aut.mathcs.blockchain.Donated
 }
 
-query selectChartitCorp {
-  description: "Select all commodities based on their main exchange"
+query selectCharityCorp {
+  description: "Select CharityCorp"
   statement:
       SELECT org.aut.mathcs.blockchain.CharityCorp
           WHERE (name ==_$name)
 }
 
-query selectRecipient {
-  description: "Select all recipints by priority"
+query selectAllCharityCorps{
+  description: "select all CharityCorps"
   statement:
-      SELECT org.aut.mathcs.blockchain.Recipient
-          WHERE (priority == _$priority)
+    SELECT org.aut.mathcs.blockchain.CharityCorp
 }
 
-query selectDonor {
-  description: "Select donor"
+query selectPersonPriority {
+  description: "Select all recipints by priority"
   statement:
-      SELECT org.aut.mathcs.blockchain.Donor
-          WHERE(doId == _$ID)
+      SELECT org.aut.mathcs.blockchain.Person
+          WHERE (pID == _$pid)
 }
+
