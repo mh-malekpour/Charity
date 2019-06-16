@@ -27,9 +27,9 @@
 
             
               <div class="form-group text-left">
-                <label for="cId">cId</label>
+                <label for="cID">cID</label>
                 
-                  <input formControlName="cId" type="text" class="form-control">
+                  <input formControlName="cID" type="text" class="form-control">
                 
               </div>
             
@@ -40,16 +40,6 @@
                 <label for="value">value</label>
                 
                   <input formControlName="value" type="number" class="form-control">
-                
-              </div>
-            
-          
-
-            
-              <div class="form-group text-left">
-                <label for="pubnum">pubnum</label>
-                
-                  <input formControlName="pubnum" type="number" class="form-control">
                 
               </div>
             
@@ -82,10 +72,10 @@
 
           
             <div class="form-group text-left">
-              <label for="cId">cId</label>
+              <label for="cID">cID</label>
               
               
-                <input [ngModel]="cId" formControlName="cId" class="form-control" disabled="disabled">  
+                <input [ngModel]="cID" formControlName="cID" class="form-control" disabled="disabled">  
               
 
             </div>
@@ -95,15 +85,6 @@
               
               
                 <input [ngModel]="value" formControlName="value" type="number" class="form-control">
-              
-
-            </div>
-          
-            <div class="form-group text-left">
-              <label for="pubnum">pubnum</label>
-              
-              
-                <input [ngModel]="pubnum" formControlName="pubnum" type="number" class="form-control">
               
 
             </div>
@@ -179,11 +160,9 @@
         <thead class="thead">
           <tr class="thead-cols">
             
-                <th class="info">cId</th>
+                <th class="info">cID</th>
             
                 <th class="info">value</th>
-            
-                <th class="info">pubnum</th>
             
               <th class="info-actions">Actions</th>
           </tr>
@@ -192,14 +171,12 @@
           <tr *ngFor="let asset of allAssets">
 
             
-                <td class="asset-properties">{{asset.cId}}</td>
+                <td class="asset-properties">{{asset.cID}}</td>
             
                 <td class="asset-properties">{{asset.value}}</td>
             
-                <td class="asset-properties">{{asset.pubnum}}</td>
-            
             <td>
-              <button (click)="getForm(asset.cId);" type="button" class="btn btn-update" data-toggle="modal" data-target="#updateAssetModal">
+              <button (click)="getForm(asset.cID);" type="button" class="btn btn-update" data-toggle="modal" data-target="#updateAssetModal">
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                   width="12.8px" height="12.8px" viewBox="0 0 30.7 30.7" style="enable-background:new 0 0 30.7 30.7;" xml:space="preserve">
                <g>
@@ -212,7 +189,7 @@
                </svg>
               </button>
 
-              <button (click)="setId(asset.cId);" type="button" class="btn btn-delete" data-toggle="modal" data-target="#deleteAssetModal">
+              <button (click)="setId(asset.cID);" type="button" class="btn btn-delete" data-toggle="modal" data-target="#deleteAssetModal">
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                   width="13.8px" height="16px" viewBox="0 0 65.9 76.2" style="enable-background:new 0 0 65.9 76.2;" xml:space="preserve">
                <path d="M42.8,60.2V22.6c0-1.7-1.3-3-3-3s-3,1.3-3,3v37.6c0,1.7,1.3,3,3,3S42.8,61.9,42.8,60.2z M29.1,60.2V22.6c0-1.7-1.3-3-3-3

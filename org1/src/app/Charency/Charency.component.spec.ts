@@ -86,7 +86,7 @@ describe('CharencyComponent', () => {
 
     // mock form to be passed to the update function
     let mockForm = new FormGroup({
-      cId: new FormControl('id')
+      cID: new FormControl('id')
     });
 
     component.updateAsset(mockForm);

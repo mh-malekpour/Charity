@@ -1,17 +1,3 @@
-/*
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 rule NetworkAdminUser {
     description: "Grant business network administrators full access to user resources"
     participant: "org.hyperledger.composer.system.NetworkAdmin"
@@ -20,13 +6,6 @@ rule NetworkAdminUser {
     action: ALLOW
 }
 
-/*rule NetworkAdminSystem {
-    description: "Grant business network charity full access to system resources"
-    participant: "org.aut.mathcs.blockchain.charity"
-    operation: ALL
-    resource: "org.hyperledger.composer.system.**"
-    action: ALLOW
-}*/
 
 rule AllAccess {
   description: "AllAccess - grant everything to everybody"
@@ -35,3 +14,57 @@ rule AllAccess {
   resource: "org.hyperledger.composer.system.**"
   action: ALLOW
 }
+
+/*
+rule R1_TraderReadAndUpdateThemselvesOnly
+ {
+  description: "Trader can read and update their own record only"
+  participant(t): "org.aut.mathcs.blockchain.trading.Trader"
+  operation: READ, UPDATE
+  resource(v): "org.aut.mathcs.blockchain.trading.Trader"
+  condition: (v.getIdentifier() == t.getIdentifier())
+  action: ALLOW
+}
+
+rule R2_TraderSeeTheirCommodities {
+  description: "Trader can do anything with their own Commodities"
+  participant(t): "org.aut.mathcs.blockchain.trading.Trader"
+  operation: ALL
+  resource(c): "org.aut.mathcs.blockchain.trading.Commodity"
+  condition: (c.owner.getIdentifier() == t.getIdentifier())
+  action: ALLOW
+}
+
+rule R3_EnableTransactions {
+    description: "Enable Traders to submit transactions"
+    participant: "org.aut.mathcs.blockchain.trading.Trader"
+    operation: ALL
+    resource: "org.aut.mathcs.blockchain.trading.Trade"
+    action: ALLOW
+}
+
+rule R4_HistoryWatch {
+  description: "Traders should be able to see the history of their own transactions only"
+  participant(t): "org.aut.mathcs.blockchain.trading.Trader"
+  operation: READ
+  resource(v): "org.hyperledger.composer.system.HistorianRecord"
+  condition: (v.participantInvoking.getIdentifier() != t.getIdentifier())
+  action: DENY
+}
+
+rule R5_RegulatorSeeThemselves {
+  description: "Regulators can see and update their own record"
+  participant: "org.aut.mathcs.blockchain.trading.Regulator"
+  operation: READ, UPDATE
+  resource: "org.aut.mathcs.blockchain.trading.Regulator"
+  action: ALLOW
+}
+
+rule R6_RegTransView {
+    description: "Grant Regulator full access to Trade Transactions"
+    participant: "org.aut.mathcs.blockchain.trading.Regulator"
+    operation: ALL
+    resource: "org.aut.mathcs.blockchain.trading.Trade"
+    action: ALLOW
+}
+*/

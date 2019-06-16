@@ -32,16 +32,18 @@ export class ReceiveComponent implements OnInit {
   private currentId;
   private errorMessage;
 
-  Donated = new FormControl('', Validators.required);
-  recipient = new FormControl('', Validators.required);
+  donated = new FormControl('', Validators.required);
+  charityCorp = new FormControl('', Validators.required);
+  newOwner = new FormControl('', Validators.required);
   transactionId = new FormControl('', Validators.required);
   timestamp = new FormControl('', Validators.required);
 
 
   constructor(private serviceReceive: ReceiveService, fb: FormBuilder) {
     this.myForm = fb.group({
-      Donated: this.Donated,
-      recipient: this.recipient,
+      donated: this.donated,
+      charityCorp: this.charityCorp,
+      newOwner: this.newOwner,
       transactionId: this.transactionId,
       timestamp: this.timestamp
     });
@@ -101,15 +103,17 @@ export class ReceiveComponent implements OnInit {
   addTransaction(form: any): Promise<any> {
     this.Transaction = {
       $class: 'org.aut.mathcs.blockchain.Receive',
-      'Donated': this.Donated.value,
-      'recipient': this.recipient.value,
+      'donated': this.donated.value,
+      'charityCorp': this.charityCorp.value,
+      'newOwner': this.newOwner.value,
       'transactionId': this.transactionId.value,
       'timestamp': this.timestamp.value
     };
 
     this.myForm.setValue({
-      'Donated': null,
-      'recipient': null,
+      'donated': null,
+      'charityCorp': null,
+      'newOwner': null,
       'transactionId': null,
       'timestamp': null
     });
@@ -119,8 +123,9 @@ export class ReceiveComponent implements OnInit {
     .then(() => {
       this.errorMessage = null;
       this.myForm.setValue({
-        'Donated': null,
-        'recipient': null,
+        'donated': null,
+        'charityCorp': null,
+        'newOwner': null,
         'transactionId': null,
         'timestamp': null
       });
@@ -137,8 +142,9 @@ export class ReceiveComponent implements OnInit {
   updateTransaction(form: any): Promise<any> {
     this.Transaction = {
       $class: 'org.aut.mathcs.blockchain.Receive',
-      'Donated': this.Donated.value,
-      'recipient': this.recipient.value,
+      'donated': this.donated.value,
+      'charityCorp': this.charityCorp.value,
+      'newOwner': this.newOwner.value,
       'timestamp': this.timestamp.value
     };
 
@@ -187,22 +193,29 @@ export class ReceiveComponent implements OnInit {
     .then((result) => {
       this.errorMessage = null;
       const formObject = {
-        'Donated': null,
-        'recipient': null,
+        'donated': null,
+        'charityCorp': null,
+        'newOwner': null,
         'transactionId': null,
         'timestamp': null
       };
 
-      if (result.Donated) {
-        formObject.Donated = result.Donated;
+      if (result.donated) {
+        formObject.donated = result.donated;
       } else {
-        formObject.Donated = null;
+        formObject.donated = null;
       }
 
-      if (result.recipient) {
-        formObject.recipient = result.recipient;
+      if (result.charityCorp) {
+        formObject.charityCorp = result.charityCorp;
       } else {
-        formObject.recipient = null;
+        formObject.charityCorp = null;
+      }
+
+      if (result.newOwner) {
+        formObject.newOwner = result.newOwner;
+      } else {
+        formObject.newOwner = null;
       }
 
       if (result.transactionId) {
@@ -233,8 +246,9 @@ export class ReceiveComponent implements OnInit {
 
   resetForm(): void {
     this.myForm.setValue({
-      'Donated': null,
-      'recipient': null,
+      'donated': null,
+      'charityCorp': null,
+      'newOwner': null,
       'transactionId': null,
       'timestamp': null
     });

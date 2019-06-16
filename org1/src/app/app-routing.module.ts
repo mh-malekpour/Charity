@@ -20,9 +20,8 @@ import { HomeComponent } from './home/home.component';
 import { DonatedComponent } from './Donated/Donated.component';
 import { CharencyComponent } from './Charency/Charency.component';
 
-import { DonorComponent } from './Donor/Donor.component';
 import { CharityCorpComponent } from './CharityCorp/CharityCorp.component';
-import { RecipientComponent } from './Recipient/Recipient.component';
+import { PersonComponent } from './Person/Person.component';
 
 import { HelpComponent } from './Help/Help.component';
 import { ReceiveComponent } from './Receive/Receive.component';
@@ -31,9 +30,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'Donated', component: DonatedComponent },
   { path: 'Charency', component: CharencyComponent },
-  { path: 'Donor', component: DonorComponent },
   { path: 'CharityCorp', component: CharityCorpComponent },
-  { path: 'Recipient', component: RecipientComponent },
+  { path: 'Person', component: PersonComponent },
   { path: 'Help', component: HelpComponent },
   { path: 'Receive', component: ReceiveComponent },
   { path: '**', redirectTo: '' }

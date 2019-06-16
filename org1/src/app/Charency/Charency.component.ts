@@ -32,15 +32,13 @@ export class CharencyComponent implements OnInit {
   private currentId;
   private errorMessage;
 
-  cId = new FormControl('', Validators.required);
+  cID = new FormControl('', Validators.required);
   value = new FormControl('', Validators.required);
-  pubnum = new FormControl('', Validators.required);
 
   constructor(public serviceCharency: CharencyService, fb: FormBuilder) {
     this.myForm = fb.group({
-      cId: this.cId,
-      value: this.value,
-      pubnum: this.pubnum
+      cID: this.cID,
+      value: this.value
     });
   };
 
@@ -98,15 +96,13 @@ export class CharencyComponent implements OnInit {
   addAsset(form: any): Promise<any> {
     this.asset = {
       $class: 'org.aut.mathcs.blockchain.Charency',
-      'cId': this.cId.value,
-      'value': this.value.value,
-      'pubnum': this.pubnum.value
+      'cID': this.cID.value,
+      'value': this.value.value
     };
 
     this.myForm.setValue({
-      'cId': null,
-      'value': null,
-      'pubnum': null
+      'cID': null,
+      'value': null
     });
 
     return this.serviceCharency.addAsset(this.asset)
@@ -114,9 +110,8 @@ export class CharencyComponent implements OnInit {
     .then(() => {
       this.errorMessage = null;
       this.myForm.setValue({
-        'cId': null,
-        'value': null,
-        'pubnum': null
+        'cID': null,
+        'value': null
       });
       this.loadAll();
     })
@@ -133,11 +128,10 @@ export class CharencyComponent implements OnInit {
   updateAsset(form: any): Promise<any> {
     this.asset = {
       $class: 'org.aut.mathcs.blockchain.Charency',
-      'value': this.value.value,
-      'pubnum': this.pubnum.value
+      'value': this.value.value
     };
 
-    return this.serviceCharency.updateAsset(form.get('cId').value, this.asset)
+    return this.serviceCharency.updateAsset(form.get('cID').value, this.asset)
     .toPromise()
     .then(() => {
       this.errorMessage = null;
@@ -185,27 +179,20 @@ export class CharencyComponent implements OnInit {
     .then((result) => {
       this.errorMessage = null;
       const formObject = {
-        'cId': null,
-        'value': null,
-        'pubnum': null
+        'cID': null,
+        'value': null
       };
 
-      if (result.cId) {
-        formObject.cId = result.cId;
+      if (result.cID) {
+        formObject.cID = result.cID;
       } else {
-        formObject.cId = null;
+        formObject.cID = null;
       }
 
       if (result.value) {
         formObject.value = result.value;
       } else {
         formObject.value = null;
-      }
-
-      if (result.pubnum) {
-        formObject.pubnum = result.pubnum;
-      } else {
-        formObject.pubnum = null;
       }
 
       this.myForm.setValue(formObject);
@@ -224,9 +211,8 @@ export class CharencyComponent implements OnInit {
 
   resetForm(): void {
     this.myForm.setValue({
-      'cId': null,
-      'value': null,
-      'pubnum': null
+      'cID': null,
+      'value': null
       });
   }
 

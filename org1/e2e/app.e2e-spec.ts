@@ -31,13 +31,13 @@ describe('Starting tests for org1', function() {
     })
   });
 
-  it('network-name should be charity@0.0.1',() => {
+  it('network-name should be charity@0.0.7',() => {
     element(by.css('.network-name')).getWebElement()
     .then((webElement) => {
       return webElement.getText();
     })
     .then((txt) => {
-      expect(txt).toBe('charity@0.0.1.bna');
+      expect(txt).toBe('charity@0.0.7.bna');
     });
   });
 
@@ -81,32 +81,14 @@ describe('Starting tests for org1', function() {
       });
     });
 
-    it('Charency table should have 4 columns',() => {
+    it('Charency table should have 3 columns',() => {
       page.navigateTo('/Charency');
       element.all(by.css('.thead-cols th')).then(function(arr) {
-        expect(arr.length).toEqual(4); // Addition of 1 for 'Action' column
+        expect(arr.length).toEqual(3); // Addition of 1 for 'Action' column
       });
     });
   
 
-  
-    it('Donor component should be loadable',() => {
-      page.navigateTo('/Donor');
-      browser.findElement(by.id('participantName'))
-      .then((participantName) => {
-        return participantName.getText();
-      })
-      .then((txt) => {
-        expect(txt).toBe('Donor');
-      });
-    });
-
-    it('Donor table should have 4 columns',() => {
-      page.navigateTo('/Donor');
-      element.all(by.css('.thead-cols th')).then(function(arr) {
-        expect(arr.length).toEqual(4); // Addition of 1 for 'Action' column
-      });
-    });
   
     it('CharityCorp component should be loadable',() => {
       page.navigateTo('/CharityCorp');
@@ -126,21 +108,21 @@ describe('Starting tests for org1', function() {
       });
     });
   
-    it('Recipient component should be loadable',() => {
-      page.navigateTo('/Recipient');
+    it('Person component should be loadable',() => {
+      page.navigateTo('/Person');
       browser.findElement(by.id('participantName'))
       .then((participantName) => {
         return participantName.getText();
       })
       .then((txt) => {
-        expect(txt).toBe('Recipient');
+        expect(txt).toBe('Person');
       });
     });
 
-    it('Recipient table should have 5 columns',() => {
-      page.navigateTo('/Recipient');
+    it('Person table should have 6 columns',() => {
+      page.navigateTo('/Person');
       element.all(by.css('.thead-cols th')).then(function(arr) {
-        expect(arr.length).toEqual(5); // Addition of 1 for 'Action' column
+        expect(arr.length).toEqual(6); // Addition of 1 for 'Action' column
       });
     });
   

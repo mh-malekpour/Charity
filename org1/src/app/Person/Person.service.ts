@@ -15,35 +15,35 @@
 import { Injectable } from '@angular/core';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs/Observable';
-import { Donor } from '../org.aut.mathcs.blockchain';
+import { Person } from '../org.aut.mathcs.blockchain';
 import 'rxjs/Rx';
 
 // Can be injected into a constructor
 @Injectable()
-export class DonorService {
+export class PersonService {
 
-  private NAMESPACE = 'Donor';
+  private NAMESPACE = 'Person';
 
-  constructor(private dataService: DataService<Donor>) {
+  constructor(private dataService: DataService<Person>) {
   };
 
-  public getAll(): Observable<Donor[]> {
+  public getAll(): Observable<Person[]> {
     return this.dataService.getAll(this.NAMESPACE);
   }
 
-  public getparticipant(id: any): Observable<Donor> {
+  public getparticipant(id: any): Observable<Person> {
     return this.dataService.getSingle(this.NAMESPACE, id);
   }
 
-  public addParticipant(itemToAdd: any): Observable<Donor> {
+  public addParticipant(itemToAdd: any): Observable<Person> {
     return this.dataService.add(this.NAMESPACE, itemToAdd);
   }
 
-  public updateParticipant(id: any, itemToUpdate: any): Observable<Donor> {
+  public updateParticipant(id: any, itemToUpdate: any): Observable<Person> {
     return this.dataService.update(this.NAMESPACE, id, itemToUpdate);
   }
 
-  public deleteParticipant(id: any): Observable<Donor> {
+  public deleteParticipant(id: any): Observable<Person> {
     return this.dataService.delete(this.NAMESPACE, id);
   }
 

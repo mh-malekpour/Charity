@@ -32,19 +32,19 @@ export class DonatedComponent implements OnInit {
   private currentId;
   private errorMessage;
 
-  dId = new FormControl('', Validators.required);
+  dID = new FormControl('', Validators.required);
   isCash = new FormControl('', Validators.required);
-  value = new FormControl('', Validators.required);
-  owner1 = new FormControl('', Validators.required);
-  owner2 = new FormControl('', Validators.required);
+  price = new FormControl('', Validators.required);
+  currentCharity = new FormControl('', Validators.required);
+  owner = new FormControl('', Validators.required);
 
   constructor(public serviceDonated: DonatedService, fb: FormBuilder) {
     this.myForm = fb.group({
-      dId: this.dId,
+      dID: this.dID,
       isCash: this.isCash,
-      value: this.value,
-      owner1: this.owner1,
-      owner2: this.owner2
+      price: this.price,
+      currentCharity: this.currentCharity,
+      owner: this.owner
     });
   };
 
@@ -102,19 +102,19 @@ export class DonatedComponent implements OnInit {
   addAsset(form: any): Promise<any> {
     this.asset = {
       $class: 'org.aut.mathcs.blockchain.Donated',
-      'dId': this.dId.value,
+      'dID': this.dID.value,
       'isCash': this.isCash.value,
-      'value': this.value.value,
-      'owner1': this.owner1.value,
-      'owner2': this.owner2.value
+      'price': this.price.value,
+      'currentCharity': this.currentCharity.value,
+      'owner': this.owner.value
     };
 
     this.myForm.setValue({
-      'dId': null,
+      'dID': null,
       'isCash': null,
-      'value': null,
-      'owner1': null,
-      'owner2': null
+      'price': null,
+      'currentCharity': null,
+      'owner': null
     });
 
     return this.serviceDonated.addAsset(this.asset)
@@ -122,11 +122,11 @@ export class DonatedComponent implements OnInit {
     .then(() => {
       this.errorMessage = null;
       this.myForm.setValue({
-        'dId': null,
+        'dID': null,
         'isCash': null,
-        'value': null,
-        'owner1': null,
-        'owner2': null
+        'price': null,
+        'currentCharity': null,
+        'owner': null
       });
       this.loadAll();
     })
@@ -144,12 +144,12 @@ export class DonatedComponent implements OnInit {
     this.asset = {
       $class: 'org.aut.mathcs.blockchain.Donated',
       'isCash': this.isCash.value,
-      'value': this.value.value,
-      'owner1': this.owner1.value,
-      'owner2': this.owner2.value
+      'price': this.price.value,
+      'currentCharity': this.currentCharity.value,
+      'owner': this.owner.value
     };
 
-    return this.serviceDonated.updateAsset(form.get('dId').value, this.asset)
+    return this.serviceDonated.updateAsset(form.get('dID').value, this.asset)
     .toPromise()
     .then(() => {
       this.errorMessage = null;
@@ -197,17 +197,17 @@ export class DonatedComponent implements OnInit {
     .then((result) => {
       this.errorMessage = null;
       const formObject = {
-        'dId': null,
+        'dID': null,
         'isCash': null,
-        'value': null,
-        'owner1': null,
-        'owner2': null
+        'price': null,
+        'currentCharity': null,
+        'owner': null
       };
 
-      if (result.dId) {
-        formObject.dId = result.dId;
+      if (result.dID) {
+        formObject.dID = result.dID;
       } else {
-        formObject.dId = null;
+        formObject.dID = null;
       }
 
       if (result.isCash) {
@@ -216,22 +216,22 @@ export class DonatedComponent implements OnInit {
         formObject.isCash = null;
       }
 
-      if (result.value) {
-        formObject.value = result.value;
+      if (result.price) {
+        formObject.price = result.price;
       } else {
-        formObject.value = null;
+        formObject.price = null;
       }
 
-      if (result.owner1) {
-        formObject.owner1 = result.owner1;
+      if (result.currentCharity) {
+        formObject.currentCharity = result.currentCharity;
       } else {
-        formObject.owner1 = null;
+        formObject.currentCharity = null;
       }
 
-      if (result.owner2) {
-        formObject.owner2 = result.owner2;
+      if (result.owner) {
+        formObject.owner = result.owner;
       } else {
-        formObject.owner2 = null;
+        formObject.owner = null;
       }
 
       this.myForm.setValue(formObject);
@@ -250,11 +250,11 @@ export class DonatedComponent implements OnInit {
 
   resetForm(): void {
     this.myForm.setValue({
-      'dId': null,
+      'dID': null,
       'isCash': null,
-      'value': null,
-      'owner1': null,
-      'owner2': null
+      'price': null,
+      'currentCharity': null,
+      'owner': null
       });
   }
 

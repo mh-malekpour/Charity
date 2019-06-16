@@ -24,9 +24,8 @@ import { HomeComponent } from './home/home.component';
 import { DonatedComponent } from './Donated/Donated.component';
 import { CharencyComponent } from './Charency/Charency.component';
 
-import { DonorComponent } from './Donor/Donor.component';
 import { CharityCorpComponent } from './CharityCorp/CharityCorp.component';
-import { RecipientComponent } from './Recipient/Recipient.component';
+import { PersonComponent } from './Person/Person.component';
 
 import { HelpComponent } from './Help/Help.component';
 import { ReceiveComponent } from './Receive/Receive.component';
@@ -37,9 +36,8 @@ import { ReceiveComponent } from './Receive/Receive.component';
     HomeComponent,
     DonatedComponent,
     CharencyComponent,
-    DonorComponent,
     CharityCorpComponent,
-    RecipientComponent,
+    PersonComponent,
     HelpComponent,
     ReceiveComponent
   ],

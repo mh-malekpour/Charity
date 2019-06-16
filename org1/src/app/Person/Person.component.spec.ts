@@ -21,25 +21,25 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import * as sinon from 'sinon';
 import { DataService } from '../data.service';
-import { RecipientComponent } from './Recipient.component';
-import { RecipientService } from './Recipient.service';
+import { PersonComponent } from './Person.component';
+import { PersonService } from './Person.service';
 import { Observable } from 'rxjs';
 
-describe('RecipientComponent', () => {
-  let component: RecipientComponent;
-  let fixture: ComponentFixture<RecipientComponent>;
+describe('PersonComponent', () => {
+  let component: PersonComponent;
+  let fixture: ComponentFixture<PersonComponent>;
 
-  let mockRecipientService;
+  let mockPersonService;
   let mockDataService
 
   beforeEach(async(() => {
 
-    mockRecipientService = sinon.createStubInstance(RecipientService);
-    mockRecipientService.getAll.returns([]);
+    mockPersonService = sinon.createStubInstance(PersonService);
+    mockPersonService.getAll.returns([]);
     mockDataService = sinon.createStubInstance(DataService);
 
     TestBed.configureTestingModule({
-      declarations: [ RecipientComponent ],
+      declarations: [ PersonComponent ],
       imports: [
         BrowserModule,
         FormsModule,
@@ -47,12 +47,12 @@ describe('RecipientComponent', () => {
         HttpModule
       ],
       providers: [
-        {provide: RecipientService, useValue: mockRecipientService },
+        {provide: PersonService, useValue: mockPersonService },
         {provide: DataService, useValue: mockDataService },
       ]
     });
 
-    fixture = TestBed.createComponent(RecipientComponent);
+    fixture = TestBed.createComponent(PersonComponent);
     component = fixture.componentInstance;
 
   }));
@@ -61,9 +61,9 @@ describe('RecipientComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should update the table when a Recipient is added', fakeAsync(() => {
+  it('should update the table when a Person is added', fakeAsync(() => {
     let loadAllSpy = sinon.stub(component, 'loadAll');
-    sinon.stub(component.serviceRecipient, 'addParticipant').returns(new Observable(observer => {
+    sinon.stub(component.servicePerson, 'addParticipant').returns(new Observable(observer => {
       observer.next('');
       observer.complete();
     }));
@@ -77,16 +77,16 @@ describe('RecipientComponent', () => {
     loadAllSpy.restore();
   }));
 
-  it('should update the table when a Recipient is updated', fakeAsync(() => {
+  it('should update the table when a Person is updated', fakeAsync(() => {
     let loadAllSpy = sinon.stub(component, 'loadAll');
-    sinon.stub(component.serviceRecipient, 'updateParticipant').returns(new Observable(observer => {
+    sinon.stub(component.servicePerson, 'updateParticipant').returns(new Observable(observer => {
       observer.next('');
       observer.complete();
     }));
 
     // mock form to be passed to the update function
     let mockForm = new FormGroup({
-      rid: new FormControl('id')
+      pID: new FormControl('id')
     });
     
     component.updateParticipant(mockForm);
@@ -98,9 +98,9 @@ describe('RecipientComponent', () => {
     loadAllSpy.restore();
   }));
   
-  it('should update the table when a Recipient is deleted', fakeAsync(() => {
+  it('should update the table when a Person is deleted', fakeAsync(() => {
     let loadAllSpy = sinon.stub(component, 'loadAll');
-    sinon.stub(component.serviceRecipient, 'deleteParticipant').returns(new Observable(observer => {
+    sinon.stub(component.servicePerson, 'deleteParticipant').returns(new Observable(observer => {
       observer.next('');
       observer.complete();
     }));

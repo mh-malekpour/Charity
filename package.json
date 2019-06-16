@@ -3,7 +3,7 @@
     "composer": "^0.20.8"
   },
   "name": "charity",
-  "version": "0.0.1",
+  "version": "0.0.7",
   "description": "blockchain project",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/charity.bna",

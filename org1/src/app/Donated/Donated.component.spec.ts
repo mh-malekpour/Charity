@@ -86,7 +86,7 @@ describe('DonatedComponent', () => {
 
     // mock form to be passed to the update function
     let mockForm = new FormGroup({
-      dId: new FormControl('id')
+      dID: new FormControl('id')
     });
 
     component.updateAsset(mockForm);

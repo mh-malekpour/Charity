@@ -8,7 +8,7 @@ export FABRIC_VERSION=hlfv12
 
 
 composer archive create -t dir -n .;
-composer network install --card PeerAdmin@hlfv1 --archiveFile charity@0.0.1.bna;
-composer network start --networkName charity --networkVersion 0.0.1 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card;
+composer network install --card PeerAdmin@hlfv1 --archiveFile charity@$1.bna;
+composer network start --networkName charity --networkVersion $1 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card;
 composer card import --file networkadmin.card;
 composer network ping --card admin@charity;

@@ -32,16 +32,16 @@ export class HelpComponent implements OnInit {
   private currentId;
   private errorMessage;
 
-  Donated = new FormControl('', Validators.required);
-  charitycorp = new FormControl('', Validators.required);
+  donated = new FormControl('', Validators.required);
+  charityCorp = new FormControl('', Validators.required);
   transactionId = new FormControl('', Validators.required);
   timestamp = new FormControl('', Validators.required);
 
 
   constructor(private serviceHelp: HelpService, fb: FormBuilder) {
     this.myForm = fb.group({
-      Donated: this.Donated,
-      charitycorp: this.charitycorp,
+      donated: this.donated,
+      charityCorp: this.charityCorp,
       transactionId: this.transactionId,
       timestamp: this.timestamp
     });
@@ -101,15 +101,15 @@ export class HelpComponent implements OnInit {
   addTransaction(form: any): Promise<any> {
     this.Transaction = {
       $class: 'org.aut.mathcs.blockchain.Help',
-      'Donated': this.Donated.value,
-      'charitycorp': this.charitycorp.value,
+      'donated': this.donated.value,
+      'charityCorp': this.charityCorp.value,
       'transactionId': this.transactionId.value,
       'timestamp': this.timestamp.value
     };
 
     this.myForm.setValue({
-      'Donated': null,
-      'charitycorp': null,
+      'donated': null,
+      'charityCorp': null,
       'transactionId': null,
       'timestamp': null
     });
@@ -119,8 +119,8 @@ export class HelpComponent implements OnInit {
     .then(() => {
       this.errorMessage = null;
       this.myForm.setValue({
-        'Donated': null,
-        'charitycorp': null,
+        'donated': null,
+        'charityCorp': null,
         'transactionId': null,
         'timestamp': null
       });
@@ -137,8 +137,8 @@ export class HelpComponent implements OnInit {
   updateTransaction(form: any): Promise<any> {
     this.Transaction = {
       $class: 'org.aut.mathcs.blockchain.Help',
-      'Donated': this.Donated.value,
-      'charitycorp': this.charitycorp.value,
+      'donated': this.donated.value,
+      'charityCorp': this.charityCorp.value,
       'timestamp': this.timestamp.value
     };
 
@@ -187,22 +187,22 @@ export class HelpComponent implements OnInit {
     .then((result) => {
       this.errorMessage = null;
       const formObject = {
-        'Donated': null,
-        'charitycorp': null,
+        'donated': null,
+        'charityCorp': null,
         'transactionId': null,
         'timestamp': null
       };
 
-      if (result.Donated) {
-        formObject.Donated = result.Donated;
+      if (result.donated) {
+        formObject.donated = result.donated;
       } else {
-        formObject.Donated = null;
+        formObject.donated = null;
       }
 
-      if (result.charitycorp) {
-        formObject.charitycorp = result.charitycorp;
+      if (result.charityCorp) {
+        formObject.charityCorp = result.charityCorp;
       } else {
-        formObject.charitycorp = null;
+        formObject.charityCorp = null;
       }
 
       if (result.transactionId) {
@@ -233,8 +233,8 @@ export class HelpComponent implements OnInit {
 
   resetForm(): void {
     this.myForm.setValue({
-      'Donated': null,
-      'charitycorp': null,
+      'donated': null,
+      'charityCorp': null,
       'transactionId': null,
       'timestamp': null
     });

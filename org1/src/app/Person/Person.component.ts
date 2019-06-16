@@ -14,16 +14,16 @@
 
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { DonorService } from './Donor.service';
+import { PersonService } from './Person.service';
 import 'rxjs/add/operator/toPromise';
 
 @Component({
-  selector: 'app-donor',
-  templateUrl: './Donor.component.html',
-  styleUrls: ['./Donor.component.css'],
-  providers: [DonorService]
+  selector: 'app-person',
+  templateUrl: './Person.component.html',
+  styleUrls: ['./Person.component.css'],
+  providers: [PersonService]
 })
-export class DonorComponent implements OnInit {
+export class PersonComponent implements OnInit {
 
   myForm: FormGroup;
 
@@ -32,15 +32,19 @@ export class DonorComponent implements OnInit {
   private currentId;
   private errorMessage;
 
-  doId = new FormControl('', Validators.required);
+  pID = new FormControl('', Validators.required);
   name = new FormControl('', Validators.required);
+  location = new FormControl('', Validators.required);
+  priority = new FormControl('', Validators.required);
   credit = new FormControl('', Validators.required);
 
 
-  constructor(public serviceDonor: DonorService, fb: FormBuilder) {
+  constructor(public servicePerson: PersonService, fb: FormBuilder) {
     this.myForm = fb.group({
-      doId: this.doId,
+      pID: this.pID,
       name: this.name,
+      location: this.location,
+      priority: this.priority,
       credit: this.credit
     });
   };
@@ -51,7 +55,7 @@ export class DonorComponent implements OnInit {
 
   loadAll(): Promise<any> {
     const tempList = [];
-    return this.serviceDonor.getAll()
+    return this.servicePerson.getAll()
     .toPromise()
     .then((result) => {
       this.errorMessage = null;
@@ -97,25 +101,31 @@ export class DonorComponent implements OnInit {
 
   addParticipant(form: any): Promise<any> {
     this.participant = {
-      $class: 'org.aut.mathcs.blockchain.Donor',
-      'doId': this.doId.value,
+      $class: 'org.aut.mathcs.blockchain.Person',
+      'pID': this.pID.value,
       'name': this.name.value,
+      'location': this.location.value,
+      'priority': this.priority.value,
       'credit': this.credit.value
     };
 
     this.myForm.setValue({
-      'doId': null,
+      'pID': null,
       'name': null,
+      'location': null,
+      'priority': null,
       'credit': null
     });
 
-    return this.serviceDonor.addParticipant(this.participant)
+    return this.servicePerson.addParticipant(this.participant)
     .toPromise()
     .then(() => {
       this.errorMessage = null;
       this.myForm.setValue({
-        'doId': null,
+        'pID': null,
         'name': null,
+        'location': null,
+        'priority': null,
         'credit': null
       });
       this.loadAll(); 
@@ -132,12 +142,14 @@ export class DonorComponent implements OnInit {
 
    updateParticipant(form: any): Promise<any> {
     this.participant = {
-      $class: 'org.aut.mathcs.blockchain.Donor',
+      $class: 'org.aut.mathcs.blockchain.Person',
       'name': this.name.value,
+      'location': this.location.value,
+      'priority': this.priority.value,
       'credit': this.credit.value
     };
 
-    return this.serviceDonor.updateParticipant(form.get('doId').value, this.participant)
+    return this.servicePerson.updateParticipant(form.get('pID').value, this.participant)
     .toPromise()
     .then(() => {
       this.errorMessage = null;
@@ -157,7 +169,7 @@ export class DonorComponent implements OnInit {
 
   deleteParticipant(): Promise<any> {
 
-    return this.serviceDonor.deleteParticipant(this.currentId)
+    return this.servicePerson.deleteParticipant(this.currentId)
     .toPromise()
     .then(() => {
       this.errorMessage = null;
@@ -180,26 +192,40 @@ export class DonorComponent implements OnInit {
 
   getForm(id: any): Promise<any> {
 
-    return this.serviceDonor.getparticipant(id)
+    return this.servicePerson.getparticipant(id)
     .toPromise()
     .then((result) => {
       this.errorMessage = null;
       const formObject = {
-        'doId': null,
+        'pID': null,
         'name': null,
+        'location': null,
+        'priority': null,
         'credit': null
       };
 
-      if (result.doId) {
-        formObject.doId = result.doId;
+      if (result.pID) {
+        formObject.pID = result.pID;
       } else {
-        formObject.doId = null;
+        formObject.pID = null;
       }
 
       if (result.name) {
         formObject.name = result.name;
       } else {
         formObject.name = null;
+      }
+
+      if (result.location) {
+        formObject.location = result.location;
+      } else {
+        formObject.location = null;
+      }
+
+      if (result.priority) {
+        formObject.priority = result.priority;
+      } else {
+        formObject.priority = null;
       }
 
       if (result.credit) {
@@ -224,8 +250,10 @@ export class DonorComponent implements OnInit {
 
   resetForm(): void {
     this.myForm.setValue({
-      'doId': null,
+      'pID': null,
       'name': null,
+      'location': null,
+      'priority': null,
       'credit': null
     });
   }
