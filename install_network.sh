@@ -1,5 +1,8 @@
 #! /bin/bash
-
+cd ~/fabric-dev-servers
+./stopFabric.sh
+./teardownFabric.sh
+./teardownAllDocker.sh
 
 rm -rf ~/.composer/
 export FABRIC_VERSION=hlfv12
